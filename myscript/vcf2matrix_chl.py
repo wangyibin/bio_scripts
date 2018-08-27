@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-usage="""
-##Usage:python vcf2matrix_chl.py vcffile fasta
-##Author:WangYibin
-##Time:Aug 3 2018
+"""
+Usage:python vcf2matrix_chl.py vcffile fasta
 
-##Purpose:To covert the vcf file to a matrix file of the chl
+To covert the vcf file to a matrix file of the chl or all gene
+    are single copy gene.
+                                            
+                                            Copyright:WangYibin
+                                                Time:Aug 3 2018
+
 """
 
 
@@ -226,10 +229,12 @@ def  out_result(vcffile,infasta):
 
 if __name__ == '__main__':
 	if len(argv) != 3:
-		print('ERROR.the usage is:')
-		print(usage)
+		print('ERROR')
+		print(__doc__)
+
 	else:
 		vcffile    = argv[1]
 		infasta    = argv[2]
-		print(usage)
+		print(__doc__)
+
 		out_result(vcffile,infasta)		
