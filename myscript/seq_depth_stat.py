@@ -35,15 +35,17 @@ def read_depth(depthfile):
         
     with open(depthfile,'r') as f:
 
-        fl = f.readlines()
-
-        for line in fl:
+        
+        line = f.readlines()
+        while True:
+            if not line:
+                break
+            else:
             #chrom = line.split()[0]
-                        
-            depth = float(line.split()[2])
+               
+                depth = float(line.split()[2])
 
-            depth_list.append(depth)
-
+                depth_list.append(depth)
 
     return depth_list
                 
@@ -58,7 +60,7 @@ def out_mean_depth(bamfile,out_prefix,out_whether=False):
     depth_list = read_depth(depthfile)
     
     np_array = array(depth_list)
-    mean_depth = mean(np_array)
+    mean_depth = round(mean(np_array))
 
     if out_whether:
         print('%s\t%s'%(out_prefix,mean_depth))
@@ -84,8 +86,8 @@ if __name__ == "__main__":
                     help='out the result to a file whether or not [default=False] ')
     
     opts,args = p.parse_args()
-    print(len(sys.argv))
-    if len(sys.argv) < 6:
+    
+    if len(sys.argv) != 5 or len(sys.argv) != 7:
         sys.exit(p.print_help())
 
     
