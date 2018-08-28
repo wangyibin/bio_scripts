@@ -39,10 +39,12 @@ def read_depth(depthfile):
 
         for line in fl:
             #chrom = line.split()[0]
-                        
-            depth = float(line.split()[2])
+            try:            
+                depth = float(line.split()[2])
 
-            depth_list.append(depth)
+                depth_list.append(depth)
+            except IndexError:
+                continue
 
 
     return depth_list
@@ -84,8 +86,8 @@ if __name__ == "__main__":
                     help='out the result to a file whether or not [default=False] ')
     
     opts,args = p.parse_args()
-    print(len(sys.argv))
-    if len(sys.argv) < 6:
+    
+    if len(sys.argv) != 5 or len(sys.argv) != 7:
         sys.exit(p.print_help())
 
     
