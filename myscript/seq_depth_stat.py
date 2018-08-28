@@ -35,17 +35,17 @@ def read_depth(depthfile):
         
     with open(depthfile,'r') as f:
 
-        fl = f.readlines()
-
-        for line in fl:
+        
+        line = f.readlines()
+        while True:
+            if not line:
+                break
+            else:
             #chrom = line.split()[0]
-            try:            
+               
                 depth = float(line.split()[2])
 
                 depth_list.append(depth)
-            except IndexError:
-                continue
-
 
     return depth_list
                 
