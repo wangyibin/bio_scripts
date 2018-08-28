@@ -60,7 +60,7 @@ def out_mean_depth(bamfile,out_prefix,out_whether=False):
     depth_list = read_depth(depthfile)
     
     np_array = array(depth_list)
-    mean_depth = mean(np_array)
+    mean_depth = round(mean(np_array))
 
     if out_whether:
         print('%s\t%s'%(out_prefix,mean_depth))
